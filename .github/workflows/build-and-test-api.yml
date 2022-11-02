@@ -4,9 +4,11 @@ on:
   push:
     branches: [ main ]
     paths: [apps/surveychimp-api, libs]
+    
   pull_request:
-    branches: [ main ]
-
+    branches: [ main ] 
+    paths: [apps/surveychimp-api, libs]
+  
 jobs:
   build:
     
