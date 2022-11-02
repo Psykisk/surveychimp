@@ -1,4 +1,4 @@
-@baseUrl=http://localhost:3333
+@baseUrl=https://psykisk.me/api
 
 POST {{baseUrl}}/survey
 Content-Type: application/json
@@ -12,11 +12,11 @@ Content-Type: application/json
 
 ###
 
-GET {{baseUrl}}/survey/635ad5b2cf3d50daaa87c966
+GET {{baseUrl}}/survey/63604c1e5e7e5db7c32ea545
 
 ###
 
-PATCH {{baseUrl}}/survey/635ad5b2cf3d50daaa87c966
+PATCH {{baseUrl}}/survey/63604c1e5e7e5db7c32ea545
 Content-Type: application/json
 
 {
