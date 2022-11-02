@@ -3,11 +3,11 @@ name: Node.js CI
 on:
   push:
     branches: [ main ]
-    paths: ['apps/surveychimp-survey-spa', 'libs']
+    paths: [apps/surveychimp-survey-spa, libs]
     
   pull_request:
     branches: [ main ]
-    paths: ['apps/surveychimp-survey-spa', 'libs']
+    paths: [apps/surveychimp-survey-spa, libs]
 
 jobs:
   build:
