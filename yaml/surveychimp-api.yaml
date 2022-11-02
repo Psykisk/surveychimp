@@ -1,0 +1,55 @@
+databases:
+- cluster_name: db-mongodb-nyc1-11778
+  engine: MONGODB
+  name: db-mongodb-nyc1-11778
+  production: true
+  version: "5"
+domains:
+- domain: psykisk.me
+  type: PRIMARY
+envs:
+- key: DATABASE_URL
+  scope: RUN_AND_BUILD_TIME
+  type: SECRET
+  value: EV[1:eJpDOa0lPwsF+eNzxrIz+4HfHrDHLIC7:vIdxYWijGjysSa5Ci+Qe768/erl2WNkVluTNuehMqHuElFGBJHchWSdqe3Fa8VkMuVY10g5IM26OZKn66BA1/MIoCN1jxvDiuy4IUiyexrHHJ3QPLw==]
+name: goldfish-app
+region: ams
+services:
+- build_command: npx nx run surveychimp-api:build:production
+  environment_slug: node-js
+  envs:
+  - key: DATABASE_URL
+    scope: RUN_AND_BUILD_TIME
+    type: SECRET
+    value: EV[1:XJsA2+ynZl58CKdGl7zBt8GU0yOTJHIk:CrVNQgR9eIRAu5ti7YGVLpIjzyMenJbSbj/sXkLBG0cxlRVlgoWwi/3dfAgMbuBLE56kT+TLXgHYQb92RIUgzAVx54oVLTTiiJRbyhIEAA4MGx7Krg==]
+  - key: DATABASE_URL
+    scope: RUN_TIME
+    value: ${db-mongodb-nyc1-11778.DATABASE_URL}
+  - key: CA_CERT
+    scope: RUN_TIME
+    value: ${db-mongodb-nyc1-11778.CA_CERT}
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: Psykisk/surveychimp
+  http_port: 3333
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: surveychimp
+  routes:
+  - path: /api
+  run_command: node ./dist/apps/surveychimp-api/main.js
+  source_dir: /
+static_sites:
+- build_command: npx nx run surveychimp-survey-spa:build:production
+  catchall_document: index.html
+  environment_slug: node-js
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: Psykisk/surveychimp
+  name: surveychimp2
+  output_dir: dist/apps/surveychimp-survey-spa
+  routes:
+  - path: /
+  source_dir: /
