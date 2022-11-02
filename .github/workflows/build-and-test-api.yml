@@ -7,8 +7,8 @@ on:
   pull_request:
     branches: [ main ] 
     paths: 
-    - libs
-    - apps/surveychimp-api
+    - 'libs/**'
+    - 'apps/surveychimp-api/**'
   
 jobs:
   build:
