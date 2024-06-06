@@ -8,4 +8,8 @@ describe('Generic endpoints', () => {
     const res = await requestWithSupertest.get('/api/todos');
     expect(res.status).toEqual(200);
   });
+  test('GET /api/todos/:id', async () => {
+    const res = await requestWithSupertest.get('/api/todos/1');
+    expect(res.status).toEqual(200);
+  });
 });
